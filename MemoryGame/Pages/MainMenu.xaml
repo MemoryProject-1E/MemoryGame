@@ -1,0 +1,34 @@
+﻿<Page
+	x:Class="MemoryGame.Pages.MainMenu"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:local="clr-namespace:MemoryGame.Pages"
+	mc:Ignorable="d" 
+	d:DesignHeight="1080"
+	d:DesignWidth="1920"
+	Title="MainMenu"
+>
+	<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Style="{StaticResource HeadingRow}" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Heading}">
+            Memory Game
+        </TextBlock>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonList}">
+            <Button Style="{StaticResource Button}" Click="GoToNewGame">Speel Nu</Button>
+            <Button Style="{StaticResource Button}" Click="GoToHighScores">High Scores</Button>
+            <Button Style="{StaticResource Button}" Click="GoToSettings">Instellingen</Button>
+            <Button Style="{StaticResource Button}" Click="GoToCredits">Credits</Button>
+            <Button Style="{StaticResource Button}" Click="ExitGame">Afsluiten</Button>
+        </StackPanel>
+    </Grid>
+</Page>

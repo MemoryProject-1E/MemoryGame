@@ -1,0 +1,94 @@
+﻿<Application
+	x:Class="MemoryGame.App"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:MemoryGame"
+	StartupUri="MainWindow.xaml"
+>
+	<Application.Resources>
+		<!-- Headings -->
+		<Style x:Key="HeadingRow" TargetType="{x:Type RowDefinition}">
+			<Setter Property="Height" Value="400" />
+		</Style>
+
+		<Style x:Key="HeadingRowSmall" TargetType="{x:Type RowDefinition}">
+			<Setter Property="Height" Value="180" />
+		</Style>
+
+		<Style x:Key="Heading" TargetType="{x:Type TextBlock}">
+			<Setter Property="FontSize" Value="143" />
+			<Setter Property="Foreground" Value="White" />
+			<Setter Property="HorizontalAlignment" Value="Center" />
+			<Setter Property="VerticalAlignment" Value="Bottom" />
+		</Style>
+
+		<Style x:Key="SmallHeading" TargetType="{x:Type TextBlock}">
+			<Setter Property="Margin" Value="0,80,0,0" />
+			<Setter Property="FontSize" Value="51" />
+			<Setter Property="Foreground" Value="White" />
+			<Setter Property="HorizontalAlignment" Value="Center" />
+			<Setter Property="VerticalAlignment" Value="Bottom" />
+		</Style>
+
+		<!-- Buttons -->
+		<Style x:Key="ButtonList" TargetType="{x:Type StackPanel}">
+			<Setter Property="Width" Value="616" />
+			<Setter Property="HorizontalAlignment" Value="Center" />
+		</Style>
+
+		<Style x:Key="Button" TargetType="{x:Type Button}">
+			<Setter Property="Height" Value="69" />
+			<Setter Property="Margin" Value="0,0,0,10" />
+			<!--<Setter Property="BorderBrush" Value="#5C48CE" />-->
+			<Setter Property="Background" Value="Transparent" />
+			<Setter Property="Foreground" Value="White" />
+			<Setter Property="FontSize" Value="47" />
+		</Style>
+
+		<Style x:Key="TileButton" TargetType="{x:Type Button}">
+			<Setter Property="Width" Value="180" />
+			<Setter Property="Height" Value="180" />
+			<Setter Property="Margin" Value="14" />
+			<Setter Property="HorizontalAlignment" Value="Stretch" />
+			<Setter Property="VerticalAlignment" Value="Stretch" />
+			<Setter Property="Background" Value="#7649FE" />
+		</Style>
+
+		<!-- Text Input -->
+		<Style x:Key="TextInput" TargetType="{x:Type TextBox}">
+			<Setter Property="Width" Value="420" />
+			<Setter Property="Height" Value="47" />
+			<Setter Property="Margin" Value="0,50,0,0" />
+			<Setter Property="VerticalAlignment" Value="Center" />
+			<Setter Property="BorderBrush" Value="#5C48CE" />
+			<Setter Property="Background" Value="Transparent" />
+			<Setter Property="FontSize" Value="34" />
+			<Setter Property="Foreground" Value="White" />
+		</Style>
+
+		<!-- Credits -->
+		<Style x:Key="Credit" TargetType="{x:Type TextBlock}">
+			<Setter Property="HorizontalAlignment" Value="Center" />
+			<Setter Property="FontSize" Value="51" />
+			<Setter Property="Foreground" Value="White" />
+		</Style>
+
+		<!-- Game -->
+		<Style x:Key="ScoreIndicator" TargetType="{x:Type StackPanel}">
+			<Setter Property="Width" Value="35" />
+			<Setter Property="Height" Value="35" />
+			<Setter Property="Margin" Value="5" />
+		</Style>
+
+		<Style x:Key="ScorePlayerName" TargetType="{x:Type TextBlock}">
+			<Setter Property="FontSize" Value="51" />
+			<Setter Property="Foreground" Value="White" />
+		</Style>
+
+		<!-- Game Settings -->
+		<Style x:Key="SettingsWindow" TargetType="{x:Type Window}">
+			<Setter Property="Width" Value="800" />
+			<Setter Property="Height" Value="400" />
+		</Style>
+	</Application.Resources>
+</Application>

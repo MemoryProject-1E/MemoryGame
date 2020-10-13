@@ -1,0 +1,63 @@
+﻿<Page
+	x:Class="MemoryGame.Pages.Game"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:local="clr-namespace:MemoryGame.Pages"
+	mc:Ignorable="d" 
+	d:DesignHeight="1080"
+	d:DesignWidth="1920"
+	Title="Game"
+>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="70" />
+			<RowDefinition />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+
+		<Button
+			Grid.Row="0"
+			Grid.Column="0"
+			Grid.ColumnSpan="2"
+			Width="66"
+			Height="66"
+			HorizontalAlignment="Right"
+			Margin="3"
+			Click="OpenSettings"
+		/>
+
+		<Grid
+			Name="TileGridEl"
+			Grid.Row="1"
+			Grid.Column="0"
+			Grid.ColumnSpan="2"
+			HorizontalAlignment="Center"
+		/>
+
+		<StackPanel Grid.Row="2" Grid.Column="0">
+			<StackPanel Name="PlayerOneScoreIndicators" FlowDirection="LeftToRight">
+				<StackPanel Style="{StaticResource ScoreIndicator}" />
+				<StackPanel Style="{StaticResource ScoreIndicator}" />
+				<StackPanel Style="{StaticResource ScoreIndicator}" />
+				<StackPanel Style="{StaticResource ScoreIndicator}" />
+			</StackPanel>
+			<TextBlock Name="PlayerOneScoreText" Style="{StaticResource ScorePlayerName}" />
+		</StackPanel>
+
+		<StackPanel Grid.Row="2" Grid.Column="1">
+			<StackPanel Name="PlayerTwoScoreIndicators" FlowDirection="LeftToRight">
+				<StackPanel Style="{StaticResource ScoreIndicator}" />
+				<StackPanel Style="{StaticResource ScoreIndicator}" />
+				<StackPanel Style="{StaticResource ScoreIndicator}" />
+				<StackPanel Style="{StaticResource ScoreIndicator}" />
+			</StackPanel>
+			<TextBlock Name="PlayerTwoScoreText" Style="{StaticResource ScorePlayerName}" />
+		</StackPanel>
+	</Grid>
+</Page>
