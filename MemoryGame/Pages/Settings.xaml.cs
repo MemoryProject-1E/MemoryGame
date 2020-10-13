@@ -24,7 +24,7 @@ namespace MemoryGame.Pages
 
 		private int GridSize
 		{
-			get { return Int32.Parse(File.ReadAllText(Path)); }
+			get { return !File.Exists(Path) ? 4 : Int32.Parse(File.ReadAllText(Path)); }
 			set { File.WriteAllText(Path, value.ToString(), Encoding.UTF8); }
 		} 
 
