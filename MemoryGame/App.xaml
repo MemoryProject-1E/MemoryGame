@@ -41,9 +41,14 @@
 			<Setter Property="Margin" Value="0,0,0,10" />
 			<!--<Setter Property="BorderBrush" Value="#5C48CE" />-->
 			<Setter Property="Background" Value="Transparent" />
-			<Setter Property="Foreground" Value="White" />
-			<Setter Property="FontSize" Value="47" />
-		</Style>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="47" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#0c164f" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
 		<Style x:Key="TileButton" TargetType="{x:Type Button}">
 			<Setter Property="Width" Value="180" />
