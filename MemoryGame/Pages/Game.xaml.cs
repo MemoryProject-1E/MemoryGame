@@ -1,99 +1,139 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Shapes;
 using MemoryGame.Models;
 
 namespace MemoryGame.Pages
 {
 	public partial class Game : Page
 	{
-		private Player[] Players;
-		private TileGrid GridData;
-		private int CurrentPlayerIndex = 0;
-		private (int x, int y) RevealedTileCoords = (-1, -1);
-		private Window SettingsWindow = new Window();
 
-		public Game(Player[] players)
+		const int NR_OF_ROWS = 4;
+		const int NR_OF_COLUMNS = 4;
+		const int SIZE = 100;
+
+		private int[,] StatusOfCard = new int[NR_OF_ROWS, NR_OF_COLUMNS];
+		private Rectangle[,] Card = new Rectangle[NR_OF_ROWS, NR_OF_COLUMNS];
+		private static Random rng = new Random();
+
+		public Game()
 		{
-			Players = players;
 			InitializeComponent();
-			GridData = new TileGrid {
-				Players = Players,
-				GridSize = 4,
-				Element = TileGridEl,
-			};
-			UpdatePlayerScore(Players[0]);
-			UpdatePlayerScore(Players[1]);
-			SettingsWindow.Style = Application.Current.TryFindResource("SettingsWindow") as Style;
+			CreateBoard();
+			Randomize();
+			Pogger();
 		}
 
-		public void OpenSettings(object sender, RoutedEventArgs e)
-		{
-			SettingsWindow = new Window();
-			SettingsWindow.Show();
-		}
 
-		private void UpdatePlayerScore(Player player)
+		private void CreateBoard()
 		{
-			var isPlayerOne = player == Players[0];
-			TextBlock textElement = isPlayerOne ? PlayerOneScoreText : PlayerTwoScoreText;
-			StackPanel indicators = isPlayerOne ? PlayerOneScoreIndicators : PlayerTwoScoreIndicators;
-			textElement.Text = $"{player.Name}: {player.Score}";
-			for (var i = 0; i < indicators.Children.Count; i += 1)
+			for (int i = 0; i < NR_OF_ROWS; i++)
 			{
-				StackPanel indicator = indicators.Children[i] as StackPanel;
-				indicator.Background = i <= player.Score ? Constants.COLOR_PURPLE : Brushes.Transparent;
+				ConnectMemorieGame.RowDefinitions.Add(new RowDefinition());
+			}
+			for (int i = 0; i < NR_OF_COLUMNS; i++)
+			{
+				ConnectMemorieGame.ColumnDefinitions.Add(new ColumnDefinition());
 			}
 		}
 
-		private Player CurrentPlayer => Players[CurrentPlayerIndex];
+		
 
-		private Tile RevealedTile => RevealedTileCoords.x == -1
-			? null
-			: GridData.Tiles[RevealedTileCoords.x, RevealedTileCoords.y];
 
-		public void OnTileClick(object sender, RoutedEventArgs e)
+		private void Randomize()
 		{
-			Button tileButton = e.Source as Button;
-			int x = Grid.GetColumn(tileButton);
-			int y = Grid.GetRow(tileButton);
-			Tile tile = GridData.Tiles[x, y];
+			List<int> List = new List<int>
+			{ 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
+			List.Shuffle();
 
-			// Ignore clicks on already revealed tiles
-			if (!tile.IsRevealed)
+			
+			Random rnd = new Random();
+			int PickedNumber = 0;
+			int Number = 0;
+
+			for (int r = 0; r < NR_OF_ROWS; r++)
 			{
-				tile.Reveal();
-
-				// First tile
-				if (RevealedTile == null)
+				for (int c = 0; c < NR_OF_COLUMNS; c++)
 				{
-					RevealedTileCoords = (x, y);
-				}
-
-				// No match
-				else if (tile.Type != RevealedTile.Type)
-				{
-					tile.Hide();
-					RevealedTile.Hide();
-					RevealedTileCoords = (-1, -1);
-					NextPlayer();
-				}
-
-				// Match
-				else
-				{
-					CurrentPlayer.ApplyScore(tile.Type);
-
-					tile.IsMatched = true;
-					RevealedTile.IsMatched = true;
-					RevealedTileCoords = (-1, -1);
+					PickedNumber = List[Number];
+					StatusOfCard[r, c] = PickedNumber;
+					Number++;
 				}
 			}
 		}
 
-		private void NextPlayer()
+
+
+
+		private void Pogger()
 		{
-			CurrentPlayerIndex = CurrentPlayerIndex == 0 ? 1 : 0;
+			for (int r = 0; r < NR_OF_ROWS; r++)
+			{
+				for (int c = 0; c < NR_OF_COLUMNS; c++)
+				{
+					Rectangle Card = new Rectangle();
+					Card.Fill = Brushes.Aqua;
+					Card.Width = SIZE;
+					Card.Height = SIZE;
+					//Card.MouseEnter += Card_MouseEnter;
+					//Card.MouseLeave += Card_MouseLeave;
+					Card.Tag = c;
+					Card.Tag = r;
+					Card.MouseDown += Card_MouseDown;
+					Grid.SetColumn(Card, c);
+					Grid.SetRow(Card, r);
+					ConnectMemorieGame.Children.Add(Card);
+
+				}
+			}
+		}
+
+		private void Card_MouseEnter(object sender, MouseEventArgs e)
+		{
+			((Rectangle)sender).Fill = Brushes.Gray;
+		} 
+
+		private void Card_MouseLeave(object sender, MouseEventArgs e)
+		{
+			((Rectangle)sender).Fill = Brushes.Aqua;
+		}
+
+		private void Card_MouseDown(object sender, MouseEventArgs e)
+		{
+			int column = (int)((Rectangle)sender).Tag;
+			int row = (int)((Rectangle)sender).Tag;
+
+			if (StatusOfCard[row, column] == 0)
+				((Rectangle)sender).Fill = Brushes.Red;
+
+			else if (StatusOfCard[row, column] == 1)
+				((Rectangle)sender).Fill = Brushes.Pink;
+
+			else if (StatusOfCard[row, column] == 2)
+				((Rectangle)sender).Fill = Brushes.Purple;
+
+			else if (StatusOfCard[row, column] == 3)
+				((Rectangle)sender).Fill = Brushes.Yellow;
+
+			else if (StatusOfCard[row, column] == 4)
+				((Rectangle)sender).Fill = Brushes.Green;
+
+			else if (StatusOfCard[row, column] == 5)
+				((Rectangle)sender).Fill = Brushes.Gray;
+
+			else if (StatusOfCard[row, column] == 6)
+				((Rectangle)sender).Fill = Brushes.Black;
+
+			else if (StatusOfCard[row, column] == 7)
+				((Rectangle)sender).Fill = Brushes.Silver;
+
 		}
 	}
 }
+
+	

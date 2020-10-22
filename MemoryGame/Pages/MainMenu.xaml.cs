@@ -14,7 +14,7 @@ namespace MemoryGame.Pages
 
 		public void GoToNewGame(object sender, RoutedEventArgs e)
 		{
-			NavigationService.Navigate(new PlayerSetup());
+			NavigationService.Navigate(new Game());
 		}
 
 		public void GoToHighScores(object sender, RoutedEventArgs e)

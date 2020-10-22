@@ -10,6 +10,7 @@
 	d:DesignWidth="1920"
 	Title="MainMenu"
 >
+    
 	<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Style="{StaticResource HeadingRow}" />
