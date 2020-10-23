@@ -8,24 +8,31 @@ namespace MemoryGame.Pages
 	public partial class Game : Page
 	{
 		private Player[] Players;
-		private TileGrid GridData;
+		private CardGrid GridData;
 		private int CurrentPlayerIndex = 0;
-		private (int x, int y) RevealedTileCoords = (-1, -1);
+		private (int x, int y) RevealedCardCoords = (-1, -1);
 		private Window SettingsWindow = new Window();
 
 		public Game(Player[] players)
 		{
 			Players = players;
 			InitializeComponent();
-			GridData = new TileGrid {
+			GridData = new CardGrid {
 				Players = Players,
 				GridSize = 4,
-				Element = TileGridEl,
+				Element = CardGridEl,
 			};
+			DrawCards();
 			UpdatePlayerScore(Players[0]);
 			UpdatePlayerScore(Players[1]);
 			SettingsWindow.Style = Application.Current.TryFindResource("SettingsWindow") as Style;
 		}
+
+		public void DrawCards()
+		{
+
+		}
+		
 
 		public void OpenSettings(object sender, RoutedEventArgs e)
 		{
@@ -48,45 +55,45 @@ namespace MemoryGame.Pages
 
 		private Player CurrentPlayer => Players[CurrentPlayerIndex];
 
-		private Tile RevealedTile => RevealedTileCoords.x == -1
+		private Card RevealedCard => RevealedCardCoords.x == -1
 			? null
-			: GridData.Tiles[RevealedTileCoords.x, RevealedTileCoords.y];
+			: GridData.Cards[RevealedCardCoords.x, RevealedCardCoords.y];
 
-		public void OnTileClick(object sender, RoutedEventArgs e)
+		public void OnCardClick(object sender, RoutedEventArgs e)
 		{
-			Button tileButton = e.Source as Button;
-			int x = Grid.GetColumn(tileButton);
-			int y = Grid.GetRow(tileButton);
-			Tile tile = GridData.Tiles[x, y];
+			Button cardButton = e.Source as Button;
+			int x = Grid.GetColumn(cardButton);
+			int y = Grid.GetRow(cardButton);
+			Card card = GridData.Cards[x, y];
 
-			// Ignore clicks on already revealed tiles
-			if (!tile.IsRevealed)
+			// Ignore clicks on already revealed cards
+			if (!card.IsRevealed)
 			{
-				tile.Reveal();
+				card.Reveal();
 
-				// First tile
-				if (RevealedTile == null)
+				// First card
+				if (RevealedCard == null)
 				{
-					RevealedTileCoords = (x, y);
+					RevealedCardCoords = (x, y);
 				}
 
 				// No match
-				else if (tile.Type != RevealedTile.Type)
+				else if (card.Type != RevealedCard.Type)
 				{
-					tile.Hide();
-					RevealedTile.Hide();
-					RevealedTileCoords = (-1, -1);
+					card.Hide();
+					RevealedCard.Hide();
+					RevealedCardCoords = (-1, -1);
 					NextPlayer();
 				}
 
 				// Match
 				else
 				{
-					CurrentPlayer.ApplyScore(tile.Type);
+					CurrentPlayer.ApplyScore(card.Type);
 
-					tile.IsMatched = true;
-					RevealedTile.IsMatched = true;
-					RevealedTileCoords = (-1, -1);
+					card.IsMatched = true;
+					RevealedCard.IsMatched = true;
+					RevealedCardCoords = (-1, -1);
 				}
 			}
 		}

@@ -101,8 +101,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Player.cs" />
-    <Compile Include="Models\Tile.cs" />
-    <Compile Include="Models\TileGrid.cs" />
+    <Compile Include="Models\Card.cs" />
+    <Compile Include="Models\CardGrid.cs" />
     <Compile Include="Pages\Credits.xaml.cs">
       <DependentUpon>Credits.xaml</DependentUpon>
     </Compile>

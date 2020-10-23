@@ -5,12 +5,12 @@ using System.Windows.Controls;
 
 namespace MemoryGame.Models
 {
-	public class TileGrid
+	public class CardGrid
 	{
-		private static List<TileType> GetShuffledTypes()
+		private static List<CardType> GetShuffledTypes()
 		{
-			var types = new List<TileType>();
-			foreach (TileType type in Enum.GetValues(typeof(TileType)).Cast<TileType>())
+			var types = new List<CardType>();
+			foreach (CardType type in Enum.GetValues(typeof(CardType)).Cast<CardType>())
 			{
 				types.Add(type);
 				types.Add(type);
@@ -22,7 +22,7 @@ namespace MemoryGame.Models
 			{
 				remaining -= 1;
 				int k = random.Next(remaining + 1);
-				TileType value = types[k];
+				CardType value = types[k];
 				types[k] = types[remaining];
 				types[remaining] = value;
 			}
@@ -33,38 +33,38 @@ namespace MemoryGame.Models
 		public int GridSize { get; set; }
 		public Grid Element { get; set; }
 
-		public Tile[,] Tiles;
+		public Card[,] Cards;
 
-		public TileGrid()
+		public CardGrid()
 		{
-			Tiles = new Tile[GridSize, GridSize];
-			List<TileType> tileTypes = GetShuffledTypes();
+			Cards = new Card[GridSize, GridSize];
+			List<CardType> CardTypes = GetShuffledTypes();
 			for (var x = 0; x < GridSize; x += 1)
 			{
 				Element.ColumnDefinitions.Add(new ColumnDefinition());
 				Element.RowDefinitions.Add(new RowDefinition());
 				for (var y = 0; y < GridSize; y += 1)
 				{
-					var tile = new Tile(x, y) { Type = tileTypes[x + y] };
-					Element.Children.Add(tile.Element);
-					Tiles[x, y] = tile;
+					var card = new Card(x, y) { Type = CardTypes[x + y] };
+					Element.Children.Add(card.Element);
+					Cards[x, y] = card;
 				}
 			}
 		}
 
-		public List<Tile> AllTiles
+		public List<Card> AllCards
 		{
 			get
 			{
-				var tiles = new List<Tile>();
+				var cards = new List<Card>();
 				for (var x = 0; x < GridSize; x += 1)
 				{
 					for (var y = 0; y < GridSize; y += 1)
 					{
-						tiles.Add(Tiles[x, y]);
+						cards.Add(Cards[x, y]);
 					}
 				}
-				return tiles;
+				return cards;
 			}
 		}
 	}

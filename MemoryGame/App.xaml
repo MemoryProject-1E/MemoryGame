@@ -50,7 +50,7 @@
             </Style.Triggers>
         </Style>
 
-		<Style x:Key="TileButton" TargetType="{x:Type Button}">
+		<Style x:Key="CardButton" TargetType="{x:Type Button}">
 			<Setter Property="Width" Value="180" />
 			<Setter Property="Height" Value="180" />
 			<Setter Property="Margin" Value="14" />
