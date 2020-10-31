@@ -1,14 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Controls;
 
 namespace MemoryGame.Models
 {
 	public class Player
 	{
-		public string Name { get; set; }
-		private HashSet<CardType> ScoredTypes = new HashSet<CardType>();
+		private readonly HashSet<CardType> ScoredTypes = new HashSet<CardType>();
+		public string Name;
+		public TextBlock ScoreElement;
+
+		public Player(string name)
+		{
+			Name = name;
+		}
 
 		public int Score => ScoredTypes.Count;
-			
+
 		public void ApplyScore(CardType type)
 		{
 			ScoredTypes.Add(type);

@@ -30,10 +30,10 @@ namespace MemoryGame.Pages
 			{
 				var players = new Player[2]
 				{
-					new Player { Name = PlayerOneNameText },
-					new Player { Name = PlayerTwoNameText },
+					new Player(PlayerOneNameText),
+					new Player(PlayerTwoNameText),
 				};
-				NavigationService.Navigate(new Game(players));
+				NavigationService.Navigate(new GamePage(players));
 			}
 		}
 

@@ -10,36 +10,35 @@
 	d:DesignWidth="1920"
 	Title="HighScores"
 >
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Style="{StaticResource HeadingRowSmall}" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="450" />
-			<RowDefinition Height="Auto" />
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition />
-		</Grid.ColumnDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Style="{StaticResource HeadingRowSmall}" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="450" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-		<TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Heading}">
+        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Heading}">
 			High Scores
-		</TextBlock>
+        </TextBlock>
 
-		<StackPanel Grid.Row="1" Grid.Column="0" FlowDirection="LeftToRight" Margin="110,0,110,0">
-			<TextBlock>TODO</TextBlock>
-		</StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" FlowDirection="LeftToRight" Margin="110,0,110,0">
+            <TextBlock>TODO</TextBlock>
+        </StackPanel>
 
-		<ListBox
+        <ListBox
 			Name="HighScoresList"
 			Grid.Row="2"
 			Grid.Column="0"
 			Margin="110,0,110,20"
 			Background="Transparent"
-		/>
-
-		<StackPanel Grid.Row="3" Grid.Column="0" Style="{StaticResource ButtonList}">
-			<Button Style="{StaticResource Button}" Click="Reset">Reset</Button>
-			<Button Style="{StaticResource Button}" Click="GoBack">Terug</Button>
-		</StackPanel>
-	</Grid>
+            />
+        <StackPanel Grid.Row="3" Grid.Column="0" Style="{StaticResource ButtonList}">
+            <Button Style="{StaticResource Button}" Click="Reset">Reset</Button>
+            <Button Style="{StaticResource Button}" Click="GoBack">Terug</Button>
+        </StackPanel>
+    </Grid>
 </Page>

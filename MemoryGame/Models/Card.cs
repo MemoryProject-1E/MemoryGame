@@ -1,53 +1,59 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace MemoryGame.Models
 {
 	public class Card
 	{
-		private static Dictionary<CardType, string> CardTypeImages = new Dictionary<CardType, string>
+		private static readonly Dictionary<CardType, string> CardTypeImages = new Dictionary<CardType, string>
 		{
-			{ CardType.Star, "Star" },
-			{ CardType.Moon, "Moon" },
-			{ CardType.Cat, "Cat" },
-			{ CardType.Dog, "Dog" },
-			{ CardType.Duck, "Duck" },
-			{ CardType.Hand, "Hand" },
-			{ CardType.Seven, "Seven" },
-			{ CardType.Eye, "Eye" },
+			{ CardType.Star, "Star.jpg" },
+			{ CardType.Moon, "Moon.jpg" },
+			{ CardType.Cat, "Cat.jpg" },
+			{ CardType.Dog, "Dog.jpg" },
+			{ CardType.Duck, "Duck.jpg" },
+			{ CardType.Hand, "Hand.jpg" },
+			{ CardType.Seven, "Seven.jpg" },
+			{ CardType.Eye, "Eye.jpg" },
 		};
 
-		public CardType Type { get; set; }
-		public bool IsMatched = false;
-		public Button Element = new Button();
+		public CardType Type;
+		public Button Element;
+		private readonly Image Image;
 
-		public Card(int x, int y)
+		public Card(CardType type)
 		{
-			Element.Style = Application.Current.TryFindResource("CardButton") as Style;
-			Grid.SetRow(Element, y);
-			Grid.SetColumn(Element, x);
+			Type = type;
+
+			Element = new Button()
+			{
+				Style = Application.Current.TryFindResource("CardGridCard") as Style,
+			};
+
+			Image = new Image()
+			{
+				Style = Application.Current.TryFindResource("CardImage") as Style,
+				Source = new BitmapImage(new Uri($"../Assets/Images/Cards/{CardTypeImages[Type]}", UriKind.Relative)),
+				Stretch = Stretch.UniformToFill,
+			};
 		}
 
 		public bool IsRevealed => Element.Content != null;
 
-		public void Reveal()
-		{
-			if (!IsRevealed)
-			{
-				Element.Content = CardTypeImages[Type];
-				Element.Background = Brushes.White;
-;			}
-		}
-
 		public void Hide()
 		{
-			if (!IsMatched)
-			{
-				Element.Content = string.Empty;
-				Element.Background = Constants.COLOR_PURPLE;
-			}
+			Element.Content = null;
+		}
+
+		public void Reveal()
+		{
+			Element.Content = Image;
 		}
 	}
 

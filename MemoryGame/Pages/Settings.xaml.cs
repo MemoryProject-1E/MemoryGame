@@ -1,52 +1,35 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System;
-using System.IO;
-using System.Text;
-
+using MemoryGame.Models;
 
 namespace MemoryGame.Pages
 {
-	public partial class Settings : Page
+	public partial class SettingsPage : Page
 	{
-		static string Path = "../Settings.txt";
+		private readonly Settings Config = new Settings();
 
-
-		public Settings()
+		public SettingsPage()
 		{
 			InitializeComponent();
 			ApplyGridSize();
-			if (!File.Exists(Path))
-			{
-				File.WriteAllText(Path, "4", Encoding.UTF8);
-			}
 		}
-
-		private int GridSize
-		{
-			get { return !File.Exists(Path) ? 4 : Int32.Parse(File.ReadAllText(Path)); }
-			set { File.WriteAllText(Path, value.ToString(), Encoding.UTF8); }
-		} 
 
 		private void ApplyGridSize()
 		{
-			GridSizeButton.Content = $"Grid Size: {GridSize}";
+			GridSizeButton.Content = $"Grid Size: {Config.GridSize}";
 		}
 
 		public void ChangeGridSize(object sender, RoutedEventArgs e)
 		{
-
-			if (GridSize == 2) GridSize = 4;
-			else if (GridSize == 4) GridSize = 6;
-			else GridSize = 2;
-
-
+			if (Config.GridSize == 2) Config.GridSize = 4;
+			else if (Config.GridSize == 4) Config.GridSize = 6;
+			else Config.GridSize = 2;
 			ApplyGridSize();
 		}
 
-		public void GoBack(object sender, RoutedEventArgs e)
+		public void GoBack(object sender, RoutedEventArgs e) 
 		{
 			NavigationService.Navigate(new MainMenu());
 		}
 	}
-}
+}	

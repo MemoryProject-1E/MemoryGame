@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MemoryGame.Models
@@ -29,26 +30,30 @@ namespace MemoryGame.Models
 			return types;
 		}
 
-		public Player[] Players { get; set; }
-		public int GridSize { get; set; }
-		public Grid Element { get; set; }
-
+		public StackPanel Element;
+		public int GridSize;
 		public Card[,] Cards;
 
-		public CardGrid()
+		public CardGrid(StackPanel element, int gridSize)
 		{
+			Element = element;
+			GridSize = gridSize;
 			Cards = new Card[GridSize, GridSize];
-			List<CardType> CardTypes = GetShuffledTypes();
-			for (var x = 0; x < GridSize; x += 1)
+			List<CardType> cardTypes = GetShuffledTypes();
+
+			for (int x = 0; x < GridSize; x += 1)
 			{
-				Element.ColumnDefinitions.Add(new ColumnDefinition());
-				Element.RowDefinitions.Add(new RowDefinition());
-				for (var y = 0; y < GridSize; y += 1)
+				var row = new StackPanel
 				{
-					var card = new Card(x, y) { Type = CardTypes[x + y] };
-					Element.Children.Add(card.Element);
+					Style = Application.Current.TryFindResource("CardGridRow") as Style
+				};
+				for (int y = 0; y < GridSize; y += 1)
+				{
+					var card = new Card(cardTypes[GridSize * x + y]);
 					Cards[x, y] = card;
+					row.Children.Add(card.Element);
 				}
+				Element.Children.Add(row);
 			}
 		}
 
@@ -56,16 +61,24 @@ namespace MemoryGame.Models
 		{
 			get
 			{
-				var cards = new List<Card>();
+				var elements = new List<Card>();
 				for (var x = 0; x < GridSize; x += 1)
 				{
 					for (var y = 0; y < GridSize; y += 1)
 					{
-						cards.Add(Cards[x, y]);
+						elements.Add(Cards[x, y]);
 					}
 				}
-				return cards;
+				return elements;
 			}
+		}
+
+		public void SetCardsEnabled(bool isEnabled)
+		{
+			AllCards.ForEach(card =>
+			{
+				card.Element.IsEnabled = isEnabled;
+			});
 		}
 	}
 }

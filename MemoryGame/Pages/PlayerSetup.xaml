@@ -10,42 +10,42 @@
 	d:DesignWidth="1920"
 	Title="PlayerSetup"
 >
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Style="{StaticResource HeadingRow}" />
-			<RowDefinition Height="Auto" />
-			<RowDefinition />
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition />
-			<ColumnDefinition />
-		</Grid.ColumnDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Style="{StaticResource HeadingRow}" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-		<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource Heading}">
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource Heading}">
 			Namen Invoeren
-		</TextBlock>
+        </TextBlock>
 
-		<StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
-			<TextBlock Style="{StaticResource SmallHeading}">Speler 1</TextBlock>
-			<TextBox Name="PlayerOneName" Style="{StaticResource TextInput}" />
+        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource SmallHeading}">Speler 1</TextBlock>
+            <TextBox Name="PlayerOneName" Style="{StaticResource TextInput}" />
             <TextBlock Name="PlayerOneNameFeedback" />
         </StackPanel>
 
-		<StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
-			<TextBlock Style="{StaticResource SmallHeading}">Speler 2</TextBlock>
-			<TextBox Name="PlayerTwoName" Style="{StaticResource TextInput}" />
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource SmallHeading}">Speler 2</TextBlock>
+            <TextBox Name="PlayerTwoName" Style="{StaticResource TextInput}" />
             <TextBlock Name="PlayerTwoNameFeedback" />
         </StackPanel>
 
-		<StackPanel
+        <StackPanel
 			Grid.Row="2"
 			Grid.Column="0"
 			Grid.ColumnSpan="2"
 			Style="{StaticResource ButtonList}"
 			Margin="0,175,0,0"
 		>
-			<Button Style="{StaticResource Button}" Click="Submit">Start</Button>
-			<Button Style="{StaticResource Button}" Click="GoBack">Terug</Button>
-		</StackPanel>
-	</Grid>
+            <Button Style="{StaticResource Button}" Click="Submit">Start</Button>
+            <Button Style="{StaticResource Button}" Click="GoBack">Terug</Button>
+        </StackPanel>
+    </Grid>
 </Page>

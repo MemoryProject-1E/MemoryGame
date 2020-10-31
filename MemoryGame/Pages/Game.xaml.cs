@@ -1,38 +1,40 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using MemoryGame.Models;
 
 namespace MemoryGame.Pages
 {
-	public partial class Game : Page
+	public partial class GamePage : Page
 	{
-		private Player[] Players;
-		private CardGrid GridData;
+		private readonly Player[] Players;
+		private readonly CardGrid GridData;
 		private int CurrentPlayerIndex = 0;
-		private (int x, int y) RevealedCardCoords = (-1, -1);
-		private Window SettingsWindow = new Window();
+		private Card RevealedCard;
+		private Window SettingsWindow = new Window() {
+			Name = "SettingsWindow",
+			Style = Application.Current.TryFindResource("SettingsWindow") as Style,
+			Content = new SettingsWindowPage(),
+		};
+		private readonly Settings Config = new Settings();
+		private bool IsLocked = false;
 
-		public Game(Player[] players)
+		public GamePage(Player[] players)
 		{
 			Players = players;
 			InitializeComponent();
-			GridData = new CardGrid {
-				Players = Players,
-				GridSize = 4,
-				Element = CardGridEl,
-			};
-			DrawCards();
+			GridData = new CardGrid(CardGridEl, Config.GridSize);
+			GridData.AllCards
+				.Select(card => card.Element)
+				.ToList()
+				.ForEach(toggleButton =>
+				{
+					toggleButton.Click += OnCardClick;
+				});
 			UpdatePlayerScore(Players[0]);
 			UpdatePlayerScore(Players[1]);
-			SettingsWindow.Style = Application.Current.TryFindResource("SettingsWindow") as Style;
 		}
-
-		public void DrawCards()
-		{
-
-		}
-		
 
 		public void OpenSettings(object sender, RoutedEventArgs e)
 		{
@@ -44,63 +46,49 @@ namespace MemoryGame.Pages
 		{
 			var isPlayerOne = player == Players[0];
 			TextBlock textElement = isPlayerOne ? PlayerOneScoreText : PlayerTwoScoreText;
-			StackPanel indicators = isPlayerOne ? PlayerOneScoreIndicators : PlayerTwoScoreIndicators;
 			textElement.Text = $"{player.Name}: {player.Score}";
-			for (var i = 0; i < indicators.Children.Count; i += 1)
+			if (Players[0].Score + Players[1].Score == System.Math.Pow(Config.GridSize, 2) / 2)
 			{
-				StackPanel indicator = indicators.Children[i] as StackPanel;
-				indicator.Background = i <= player.Score ? Constants.COLOR_PURPLE : Brushes.Transparent;
+				NavigationService.Navigate(new Outcome(Players));
 			}
 		}
 
 		private Player CurrentPlayer => Players[CurrentPlayerIndex];
 
-		private Card RevealedCard => RevealedCardCoords.x == -1
-			? null
-			: GridData.Cards[RevealedCardCoords.x, RevealedCardCoords.y];
-
-		public void OnCardClick(object sender, RoutedEventArgs e)
+		public async void OnCardClick(object sender, RoutedEventArgs e)
 		{
-			Button cardButton = e.Source as Button;
-			int x = Grid.GetColumn(cardButton);
-			int y = Grid.GetRow(cardButton);
-			Card card = GridData.Cards[x, y];
+			if (IsLocked) return;
+			Card card = GridData.AllCards.First(a => a.Element == e.Source as Button);
+			if (card.IsRevealed) return;
+			card.Reveal();
 
-			// Ignore clicks on already revealed cards
-			if (!card.IsRevealed)
+			// First card
+			if (RevealedCard == null)
 			{
-				card.Reveal();
-
-				// First card
-				if (RevealedCard == null)
-				{
-					RevealedCardCoords = (x, y);
-				}
-
-				// No match
-				else if (card.Type != RevealedCard.Type)
-				{
-					card.Hide();
-					RevealedCard.Hide();
-					RevealedCardCoords = (-1, -1);
-					NextPlayer();
-				}
-
-				// Match
-				else
-				{
-					CurrentPlayer.ApplyScore(card.Type);
-
-					card.IsMatched = true;
-					RevealedCard.IsMatched = true;
-					RevealedCardCoords = (-1, -1);
-				}
+				RevealedCard = card;
 			}
-		}
 
-		private void NextPlayer()
-		{
-			CurrentPlayerIndex = CurrentPlayerIndex == 0 ? 1 : 0;
+			// No match
+			else if (card.Type != RevealedCard.Type)
+			{
+				IsLocked = true;
+				await Task.Delay(1000);
+				card.Hide();
+				RevealedCard.Hide();
+				GridData.SetCardsEnabled(false);
+				RevealedCard = null;
+				CurrentPlayerIndex = CurrentPlayerIndex == 0 ? 1 : 0;
+				GridData.SetCardsEnabled(true);
+				IsLocked = false;
+			}
+
+			// Match
+			else
+			{
+				CurrentPlayer.ApplyScore(card.Type);
+				UpdatePlayerScore(CurrentPlayer);
+				RevealedCard = null;
+			}
 		}
 	}
 }

@@ -22,19 +22,19 @@ namespace MemoryGame.Pages
 			NavigationService.Navigate(new HighScores());
 		}
 
+		public void GoToSettings(object sender, RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new SettingsPage());
+		}
+
 		public void GoToCredits(object sender, RoutedEventArgs e)
 		{
 			NavigationService.Navigate(new Credits());
 		}
 
-        public void GoToSettings(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Settings());
-        }
-
 		private void ExitGame(object sender, RoutedEventArgs e)
 		{
 			Environment.Exit(0);
 		}
-    }
+	}
 }
