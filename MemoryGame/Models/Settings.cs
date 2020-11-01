@@ -51,7 +51,7 @@ namespace MemoryGame.Models
 			if (player.Score > HighScores[0].Score)
 			{
 
-				HighScores.Insert(0, new HighScore()
+				_highScores.Add(new HighScore
 				{
 					PlayerName = player.Name,
 					Score = player.Score,

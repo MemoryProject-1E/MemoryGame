@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using MemoryGame.Models;
 
 namespace MemoryGame.Pages
@@ -86,8 +87,11 @@ namespace MemoryGame.Pages
 			else
 			{
 				CurrentPlayer.ApplyScore(card.Type);
+				await Task.Delay(500);
+				card.Matched();
+				RevealedCard.Matched();
 				UpdatePlayerScore(CurrentPlayer);
-				RevealedCard = null;
+				RevealedCard = null;			
 			}
 		}
 	}

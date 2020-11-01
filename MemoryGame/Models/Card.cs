@@ -55,6 +55,11 @@ namespace MemoryGame.Models
 		{
 			Element.Content = Image;
 		}
+
+		public void Matched()
+		{
+			Element.Visibility = Visibility.Hidden;
+		}
 	}
 
 	public enum CardType
