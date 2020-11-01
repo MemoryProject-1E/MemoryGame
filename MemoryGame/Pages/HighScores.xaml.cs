@@ -34,6 +34,8 @@ namespace MemoryGame.Pages
 		public void Reset(object sender, RoutedEventArgs e)
 		{
 			Config.ResetHighScores();
+			NavigationService.Navigate(new HighScores());
+
 		}
 	}
 }
