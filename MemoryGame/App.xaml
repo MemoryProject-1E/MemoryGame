@@ -108,10 +108,16 @@
         
         <!-- Outcome -->
         <Style x:Key="OutcomeAdditionalMessage" TargetType="{x:Type TextBlock}">
-            <Setter Property="FontSize" Value="105" />
+            <Setter Property="FontSize" Value="60" />
             <Setter Property="FontStyle" Value="Italic" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="HighScoreText" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="50" />
+            <Setter Property="FontStyle" Value="Italic" />
+            <Setter Property="Foreground" Value="White" />
         </Style>
     </Application.Resources>
 </Application>

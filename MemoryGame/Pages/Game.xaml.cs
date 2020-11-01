@@ -47,7 +47,7 @@ namespace MemoryGame.Pages
 			var isPlayerOne = player == Players[0];
 			TextBlock textElement = isPlayerOne ? PlayerOneScoreText : PlayerTwoScoreText;
 			textElement.Text = $"{player.Name}: {player.Score}";
-			if (Players[0].Score + Players[1].Score == System.Math.Pow(Config.GridSize, 2) / 2)
+			if (Players[0].Score + Players[1].Score == System.Math.Pow(Config.GridSize, 2) / 2 * 20)
 			{
 				NavigationService.Navigate(new Outcome(Players));
 			}

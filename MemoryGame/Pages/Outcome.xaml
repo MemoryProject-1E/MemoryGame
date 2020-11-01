@@ -22,7 +22,7 @@
         
         <TextBlock
             Style="{StaticResource SmallHeading}"
-            FontSize="130"
+            FontSize= "70"
 			Name="MainOutcomeTextBlock"
 			Grid.Row="0"
 			Grid.Column="0"
