@@ -35,7 +35,8 @@
 			Grid.Column="0"
 			Margin="110,0,110,20"
 			Background="Transparent"
-            />
+            >
+        </ListBox>
         <StackPanel Grid.Row="3" Grid.Column="0" Style="{StaticResource ButtonList}">
             <Button Style="{StaticResource Button}" Click="Reset">Reset</Button>
             <Button Style="{StaticResource Button}" Click="GoBack">Terug</Button>

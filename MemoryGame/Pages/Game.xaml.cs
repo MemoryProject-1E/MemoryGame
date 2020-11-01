@@ -86,12 +86,14 @@ namespace MemoryGame.Pages
 			// Match
 			else
 			{
+				IsLocked = true;
 				CurrentPlayer.ApplyScore(card.Type);
 				await Task.Delay(500);
 				card.Matched();
 				RevealedCard.Matched();
 				UpdatePlayerScore(CurrentPlayer);
-				RevealedCard = null;			
+				RevealedCard = null;
+				IsLocked = false;
 			}
 		}
 	}

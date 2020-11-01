@@ -43,7 +43,12 @@
             <Setter Property="Background" Value="Transparent" />
 			<Setter Property="Foreground" Value="White" />
 			<Setter Property="FontSize" Value="47" />
-		</Style>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#0c164f" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
 		<Style x:Key="CardButton" TargetType="{x:Type Button}">
 			<Setter Property="Width" Value="180" />
