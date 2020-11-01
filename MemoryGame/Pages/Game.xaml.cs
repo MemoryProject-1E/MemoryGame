@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using MemoryGame.Models;
 
 namespace MemoryGame.Pages
@@ -47,7 +48,7 @@ namespace MemoryGame.Pages
 			var isPlayerOne = player == Players[0];
 			TextBlock textElement = isPlayerOne ? PlayerOneScoreText : PlayerTwoScoreText;
 			textElement.Text = $"{player.Name}: {player.Score}";
-			if (Players[0].Score + Players[1].Score == System.Math.Pow(Config.GridSize, 2) / 2)
+			if (Players[0].Score + Players[1].Score == System.Math.Pow(Config.GridSize, 2) / 2 * 20)
 			{
 				NavigationService.Navigate(new Outcome(Players));
 			}
@@ -85,9 +86,14 @@ namespace MemoryGame.Pages
 			// Match
 			else
 			{
+				IsLocked = true;
 				CurrentPlayer.ApplyScore(card.Type);
+				await Task.Delay(500);
+				card.Matched();
+				RevealedCard.Matched();
 				UpdatePlayerScore(CurrentPlayer);
 				RevealedCard = null;
+				IsLocked = false;
 			}
 		}
 	}

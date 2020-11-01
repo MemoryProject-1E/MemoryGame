@@ -14,7 +14,7 @@ namespace MemoryGame.Models
 			Name = name;
 		}
 
-		public int Score => ScoredTypes.Count;
+		public int Score => ScoredTypes.Count * 20;
 
 		public void ApplyScore(CardType type)
 		{

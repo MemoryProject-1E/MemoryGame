@@ -158,16 +158,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Assets\Images\Cards\Cat.jpg" />
-    <Resource Include="Assets\Images\Cards\Dog.jpg" />
-    <Resource Include="Assets\Images\Cards\Duck.jpg" />
-    <Resource Include="Assets\Images\Cards\Eye.jpg" />
-    <Resource Include="Assets\Images\Cards\Hand.jpg" />
-    <Resource Include="Assets\Images\Cards\Moon.jpg" />
-    <Resource Include="Assets\Images\Cards\Seven.jpg" />
-    <Resource Include="Assets\Images\Cards\Star.jpg" />
+    <Resource Include="Assets\Images\Cards\Fish1.jpg" />
+    <Resource Include="Assets\Images\Cards\Fish2.jpg" />
+    <Resource Include="Assets\Images\Cards\Fish3.jpg" />
+    <Resource Include="Assets\Images\Cards\Fish4.jpg" />
+    <Resource Include="Assets\Images\Cards\Fish_5.jpg" />
+    <Resource Include="Assets\Images\Cards\Fish_6.jpg" />
+    <Resource Include="Assets\Images\Cards\Fish_7.jpg" />
+    <Resource Include="Assets\Images\Cards\Fish_8.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

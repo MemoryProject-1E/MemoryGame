@@ -47,25 +47,25 @@ namespace MemoryGame.Models
 
 		public bool RegisterHighScore(Player player)
 		{
-			int newHighScorePlace = -1;
-			for (int i = 0; i < HighScores.Count; i += 1)
+
+			if (player.Score > HighScores[0].Score)
 			{
-				if (newHighScorePlace == -1 && player.Score > HighScores[i].Score)
+
+				_highScores.Add(new HighScore
 				{
-					newHighScorePlace = i;
-				}
+					PlayerName = player.Name,
+					Score = player.Score,
+				});
+
+				HighScores.RemoveAt(HighScores.Count - 1);
+
+
+				Write();
+
+				return true;
 			}
-			if (newHighScorePlace == -1)
-			{
-				return false;
-			}
-			HighScores.Insert(newHighScorePlace, new HighScore()
-			{
-				PlayerName = player.Name,
-				Score = player.Score,
-			});
-			HighScores.RemoveAt(HighScores.Count - 1);
-			return true;
+
+			return false;
 		}
 
 		[JsonProperty]
@@ -82,7 +82,7 @@ namespace MemoryGame.Models
 		[JsonProperty]
 		public List<HighScore> HighScores
 		{
-			get { return _highScores.OrderBy(a => a.Score).ToList(); }
+			get { return _highScores.OrderByDescending(a => a.Score).ToList(); }
 			set
 			{
 				_highScores = value;

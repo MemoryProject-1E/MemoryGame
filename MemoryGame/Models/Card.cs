@@ -13,14 +13,14 @@ namespace MemoryGame.Models
 	{
 		private static readonly Dictionary<CardType, string> CardTypeImages = new Dictionary<CardType, string>
 		{
-			{ CardType.Star, "Star.jpg" },
-			{ CardType.Moon, "Moon.jpg" },
-			{ CardType.Cat, "Cat.jpg" },
-			{ CardType.Dog, "Dog.jpg" },
-			{ CardType.Duck, "Duck.jpg" },
-			{ CardType.Hand, "Hand.jpg" },
-			{ CardType.Seven, "Seven.jpg" },
-			{ CardType.Eye, "Eye.jpg" },
+			{ CardType.Fish1, "Fish1.jpg" },
+			{ CardType.Fish2, "Fish2.jpg" },
+			{ CardType.Fish3, "Fish3.jpg" },
+			{ CardType.Fish4, "Fish4.jpg" },
+			{ CardType.Fish_5, "Fish_5.jpg" },
+			{ CardType.Fish_6, "Fish_6.jpg" },
+			{ CardType.Fish_7, "Fish_7.jpg" },
+			{ CardType.Fish_8, "Fish_8.jpg" },
 		};
 
 		public CardType Type;
@@ -55,17 +55,22 @@ namespace MemoryGame.Models
 		{
 			Element.Content = Image;
 		}
+
+		public void Matched()
+		{
+			Element.Visibility = Visibility.Hidden;
+		}
 	}
 
 	public enum CardType
 	{
-		Star,
-		Moon,
-		Cat,
-		Dog,
-		Duck,
-		Hand,
-		Seven,
-		Eye,
+		Fish1,
+		Fish2,
+		Fish3,
+		Fish4,
+		Fish_5,
+		Fish_6,
+		Fish_7,
+		Fish_8,
 	}
 }
