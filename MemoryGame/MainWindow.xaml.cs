@@ -22,7 +22,7 @@ namespace MemoryGame
 			{
 				ResizeMode = ResizeMode.CanResize;
 				WindowStyle = WindowStyle.SingleBorderWindow;
-				WindowState = WindowState.Normal;
+				WindowState = WindowState.Maximized;
 				Topmost = false;
 			}
 			else if (Config.WindowSetting == "FullScreen")

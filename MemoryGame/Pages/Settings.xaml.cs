@@ -17,7 +17,7 @@ namespace MemoryGame.Pages
 		private void ApplySettings()
 		{
 			ApplyThemeCard();
-			ChangeWindowText();
+			ApplyWindowSetting();
 		}
 
 		private void ApplyThemeCard()
@@ -52,11 +52,6 @@ namespace MemoryGame.Pages
 			FullScreenButton.Content = Config.WindowSetting;
 			var window = (MainWindow)Application.Current.MainWindow;
 			window.SetWindow();
-		}
-
-		private void ChangeWindowText()
-		{
-			FullScreenButton.Content = Config.WindowSetting;
 		}
 
 		public void ChangeWindowSize(object sender, RoutedEventArgs e)

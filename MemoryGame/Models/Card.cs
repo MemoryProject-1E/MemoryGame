@@ -47,7 +47,7 @@ namespace MemoryGame.Models
 				CardTypeImages.Clear();
 				CardTypeImages.Add(CardType.Fish1, "Fish1.jpg");
 				CardTypeImages.Add(CardType.Fish2, "Fish2.jpg");
-				CardTypeImages.Add(CardType.Fish3, "Fish3.png");
+				CardTypeImages.Add(CardType.Fish3, "Fish3.jpg");
 				CardTypeImages.Add(CardType.Fish4, "Fish4.jpg");
 				CardTypeImages.Add(CardType.Fish_5, "Fish_5.jpg");
 				CardTypeImages.Add(CardType.Fish_6, "Fish_6.jpg");
