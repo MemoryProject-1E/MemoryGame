@@ -47,7 +47,7 @@ namespace MemoryGame.Models
 		public bool RegisterHighScore(Player player)
 		{
 
-			if (player.Score > HighScores[0].Score)
+			if (player.Score > -1)
 			{
 				_highScores.Add(new HighScore
 				{

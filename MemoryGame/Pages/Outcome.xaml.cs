@@ -32,7 +32,7 @@ namespace MemoryGame.Pages
 				{
 					AdditionalMessagesContainer.Children.Add(new TextBlock()
 					{
-						Text = $"New high score bereikt door {player.Name}",
+						Text = $"High score toegevoegd voor {player.Name}",
 						Style = Application.Current.TryFindResource("OutcomeAdditionalMessage") as Style,
 					});
 				}
