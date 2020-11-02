@@ -19,7 +19,7 @@ namespace MemoryGame.Models
 
 		private static List<HighScore> DefaultHighScores = new List<HighScore>()
 		{
-			new HighScore { PlayerName = "Gabriel", Score = 40 },
+			
 		};
 
 		public Settings()

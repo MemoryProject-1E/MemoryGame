@@ -9,6 +9,7 @@ namespace MemoryGame.Pages
 {
 	public partial class GamePage : Page
 	{
+		bool DisplayPlayer = true;
 		private readonly Player[] Players;
 		private readonly CardGrid GridData;
 		private int CurrentPlayerIndex = 0;
@@ -20,6 +21,7 @@ namespace MemoryGame.Pages
 		{
 			Players = players;
 			InitializeComponent();
+			Labelnameplayer.Content = Players[0].Name + " is aan zet";
 			GridData = new CardGrid(CardGridEl, Config.GridSize);
 			GridData.AllCards
 				.Select(card => card.Element)
@@ -78,6 +80,11 @@ namespace MemoryGame.Pages
 				CurrentPlayerIndex = CurrentPlayerIndex == 0 ? 1 : 0;
 				GridData.SetCardsEnabled(true);
 				IsLocked = false;
+				DisplayPlayer = !DisplayPlayer;
+				if (DisplayPlayer)
+					Labelnameplayer.Content = Players[0].Name + " is aan zet";
+				else
+					Labelnameplayer.Content = Players[1].Name + " is aan zet";
 			}
 
 			// Match
@@ -91,6 +98,11 @@ namespace MemoryGame.Pages
 				UpdatePlayerScore(CurrentPlayer);
 				RevealedCard = null;
 				IsLocked = false;
+
+				if (DisplayPlayer)
+					Labelnameplayer.Content = Players[0].Name + " heeft een extra zet";
+				else
+					Labelnameplayer.Content = Players[1].Name + " heeft een extra zet";
 			}
 		}
 	}

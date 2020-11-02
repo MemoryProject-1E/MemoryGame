@@ -32,6 +32,16 @@
             <Image Source="../Assets/Images/Cogwheel.png"></Image>
         </Button>
 
+        <Label 
+            Grid.Row="0"
+			Grid.Column="0"
+            x:Name="Labelnameplayer" 
+            Content="Eerste zet" 
+            FontSize="50" 
+            FontStyle="Italic" 
+            Foreground="White">
+        </Label>
+        
         <StackPanel
 			Name="CardGridEl"
 			Grid.Row="1"
