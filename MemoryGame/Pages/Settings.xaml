@@ -25,11 +25,11 @@
         </TextBlock>
 
         <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonList}">
-            <Button Name="GridSizeButton" Style="{StaticResource Button}" Click="ChangeGridSize"/>
+            <Button Name="ThemeCardButton" Style="{StaticResource Button}" Click="ThemeCardSelector"/>
             <Button Name="FullScreenButton" Style="{StaticResource Button}" Click="ChangeWindowSize"/>
             <Button Style="{StaticResource Button}" Click="ResetSettings">Reset Instellingen</Button>
         </StackPanel>
-        <StackPanel Grid.Row="2" Grid.Column="0" Style="{StaticResource ButtonList}" Margin="652,0">
+        <StackPanel Grid.Row="2" Grid.Column="0" Style="{StaticResource ButtonList}">
             <Button Style="{StaticResource Button}" Click="GoBack">Terug</Button>
         </StackPanel>
     </Grid>

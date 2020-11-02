@@ -14,13 +14,11 @@ namespace MemoryGame.Models
 
 		private static bool IsInitialized = false;
 		private static int _gridSize;
+		private static int _themeCard;
 		private static List<HighScore> _highScores;
 		private static string _windowSetting;
 
-		private static List<HighScore> DefaultHighScores = new List<HighScore>()
-		{
-
-		}; 
+		private static List<HighScore> DefaultHighScores = new List<HighScore>(); 
 
 		public Settings()
 		{
@@ -28,7 +26,7 @@ namespace MemoryGame.Models
 			{
 				if (!File.Exists(CONFIG_FILE_PATH))
 				{
-					_gridSize = 4;
+					_themeCard = 1;
 					_highScores = DefaultHighScores;
 					_windowSetting = "Windowed";
 					Write();
@@ -36,12 +34,52 @@ namespace MemoryGame.Models
 				else
 				{
 					ConfigFile config = JObject.Parse(File.ReadAllText(CONFIG_FILE_PATH)).ToObject<ConfigFile>();
-					_gridSize = config.GridSize;
+					_themeCard = config.ThemeCard;
 					_highScores = config.HighScores;
 					_windowSetting = config.WindowSetting;
 				}
 				IsInitialized = true;
 			}
+		}
+
+		[JsonProperty]
+		public int GridSize
+		{
+			get { return _gridSize; }
+			set
+			{
+				_gridSize = value;
+				Write();
+			}
+		}
+
+
+		[JsonProperty]
+		public string WindowSetting
+		{
+			get { return _windowSetting; }
+			set
+			{
+				_windowSetting = value;
+				Write();
+			}
+		}
+
+		[JsonProperty]
+		public int ThemeCard
+		{
+			get { return _themeCard; }
+			set
+			{
+				_themeCard = value;
+				Write();
+			}
+		}
+
+		public void ResetSettings()
+		{
+			WindowSetting = "Windowed";
+			ThemeCard = 1;
 		}
 
 		public bool RegisterHighScore(Player player)
@@ -65,17 +103,6 @@ namespace MemoryGame.Models
 		}
 
 		[JsonProperty]
-		public int GridSize
-		{
-			get { return _gridSize; }
-			set
-			{
-				_gridSize = value;
-				Write();
-			}
-		}
-
-		[JsonProperty]
 		public List<HighScore> HighScores
 		{
 			get { return _highScores.OrderByDescending(a => a.Score).ToList(); }
@@ -86,27 +113,10 @@ namespace MemoryGame.Models
 			}
 		}
 
-		[JsonProperty]
-		public string WindowSetting
-		{
-			get { return _windowSetting; }
-			set
-			{
-				_windowSetting = value;
-				Write();
-			}
-		}
-
 		public void ResetHighScores()
 		{
 			DefaultHighScores.Clear();
 			HighScores = DefaultHighScores;
-		}
-
-		public void ResetSettings()
-		{
-			GridSize = 4;
-			WindowSetting = "Windowed";
 		}
 
 		private void Write()
@@ -116,7 +126,7 @@ namespace MemoryGame.Models
 				var serializer = new JsonSerializer();
 				var config = new ConfigFile
 				{
-					GridSize = GridSize,
+					ThemeCard = ThemeCard,
 					HighScores = HighScores,
 					WindowSetting = WindowSetting,
 				};
@@ -127,7 +137,7 @@ namespace MemoryGame.Models
 
 		private class ConfigFile
 		{
-			public int GridSize { get; set; }
+			public int ThemeCard { get; set; }
 			public List<HighScore> HighScores { get; set; }
 			public string WindowSetting  { get; set; }
 		}

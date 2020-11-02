@@ -16,8 +16,35 @@ namespace MemoryGame.Pages
 
 		private void ApplySettings()
 		{
-			ApplyGridSize();
-			ApplyWindowSetting();
+			ApplyThemeCard();
+			ChangeWindowText();
+		}
+
+		private void ApplyThemeCard()
+		{
+			if (Config.ThemeCard == 1)
+			{
+				ThemeCardButton.Content = $"Thema kaarten: Vis";
+			}
+			else if (Config.ThemeCard == 2)
+			{
+				ThemeCardButton.Content = $"Thema kaarten: Ruimte";
+			}
+
+		}
+		
+		private void ThemeCardSelector(object sender, RoutedEventArgs e)
+		{
+			if (Config.ThemeCard == 1)
+			{
+				Config.ThemeCard = 2;
+			}
+			else if (Config.ThemeCard == 2)
+			{
+				Config.ThemeCard = 1;
+			}
+
+			ApplyThemeCard();
 		}
 
 		private void ApplyWindowSetting()
@@ -25,20 +52,11 @@ namespace MemoryGame.Pages
 			FullScreenButton.Content = Config.WindowSetting;
 			var window = (MainWindow)Application.Current.MainWindow;
 			window.SetWindow();
-
 		}
 
-		private void ApplyGridSize()
+		private void ChangeWindowText()
 		{
-			GridSizeButton.Content = $"Grid Size: {Config.GridSize}";
-		}
-
-		public void ChangeGridSize(object sender, RoutedEventArgs e)
-		{
-			if (Config.GridSize == 2) Config.GridSize = 4;
-			else if (Config.GridSize == 4) Config.GridSize = 6;
-			else Config.GridSize = 2;
-			ApplyGridSize();
+			FullScreenButton.Content = Config.WindowSetting;
 		}
 
 		public void ChangeWindowSize(object sender, RoutedEventArgs e)
@@ -52,11 +70,13 @@ namespace MemoryGame.Pages
 		{
 			Config.ResetSettings();
 			ApplySettings();
+			ApplyWindowSetting();
 		}
 
 		public void GoBack(object sender, RoutedEventArgs e) 
 		{
 			NavigationService.Navigate(new MainMenu());
 		}
+
 	}
 }	
