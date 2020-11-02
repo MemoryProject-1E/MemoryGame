@@ -119,8 +119,8 @@
             <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
 
-        <Style x:Key="HighScoreText" TargetType="{x:Type TextBlock}">
-            <Setter Property="FontSize" Value="50" />
+        <Style x:Key="HighScoreItem" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="FontSize" Value="60" />
             <Setter Property="FontStyle" Value="Italic" />
             <Setter Property="Foreground" Value="White" />
         </Style>

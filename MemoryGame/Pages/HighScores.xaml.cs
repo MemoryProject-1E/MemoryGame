@@ -20,9 +20,11 @@ namespace MemoryGame.Pages
 		{
 			foreach (HighScore HighScore in Config.HighScores)
 			{
-
-				HighScoresList.Items.Add($"{HighScore.PlayerName} {HighScore.Score}");
-
+				HighScoresList.Items.Add(new ListBoxItem()
+				{
+					Style = Application.Current.TryFindResource("HighScoreItem") as Style,
+					Content = $"{HighScore.PlayerName} {HighScore.Score}",
+				});
 			}
 		}
 		

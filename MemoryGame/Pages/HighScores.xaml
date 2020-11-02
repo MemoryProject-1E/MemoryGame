@@ -25,10 +25,6 @@
 			High Scores
         </TextBlock>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" FlowDirection="LeftToRight" Margin="110,0,110,0">
-            <TextBlock>TODO</TextBlock>
-        </StackPanel>
-
         <ListBox
 			Name="HighScoresList"
 			Grid.Row="2"
