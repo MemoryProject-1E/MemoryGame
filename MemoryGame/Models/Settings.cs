@@ -19,8 +19,8 @@ namespace MemoryGame.Models
 
 		private static List<HighScore> DefaultHighScores = new List<HighScore>()
 		{
-			
-		};
+
+		}; 
 
 		public Settings()
 		{
@@ -99,6 +99,7 @@ namespace MemoryGame.Models
 
 		public void ResetHighScores()
 		{
+			DefaultHighScores.Clear();
 			HighScores = DefaultHighScores;
 		}
 
