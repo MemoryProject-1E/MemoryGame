@@ -177,5 +177,17 @@
   <ItemGroup>
     <Resource Include="Assets\Images\Cogwheel.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Cards\Aarde.jpg" />
+    <Resource Include="Assets\Images\Cards\Jupiter.jpg" />
+    <Resource Include="Assets\Images\Cards\Mars.jpg" />
+    <Resource Include="Assets\Images\Cards\Mercurius.jpg" />
+    <Resource Include="Assets\Images\Cards\Neptunes.jpg" />
+    <Resource Include="Assets\Images\Cards\Saturnus.jpg" />
+    <Resource Include="Assets\Images\Cards\Uranus.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Images\CardsPlanets\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

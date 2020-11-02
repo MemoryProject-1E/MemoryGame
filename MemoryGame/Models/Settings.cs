@@ -13,7 +13,7 @@ namespace MemoryGame.Models
 		private const string CONFIG_FILE_PATH = "Settings.json";
 
 		private static bool IsInitialized = false;
-		private static int _gridSize;
+		private static int _gridSize = 4;
 		private static int _themeCard;
 		private static List<HighScore> _highScores;
 		private static string _windowSetting;
