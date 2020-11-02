@@ -3,7 +3,7 @@ using System.Configuration;
 using System.Windows.Navigation;
 using MemoryGame.Pages;
 using MemoryGame.Models;
-
+using System.Security.Cryptography.X509Certificates;
 
 namespace MemoryGame
 {
@@ -32,8 +32,13 @@ namespace MemoryGame
 				ResizeMode = ResizeMode.NoResize;
 				WindowStyle = WindowStyle.None;
 				WindowState = WindowState.Maximized;
-				Topmost = true;
+				//Topmost = true; // Doesn't work with In-Game settings menu
 			}
+		}
+
+		public void GoToMainMenu()
+		{
+			NavigationService.Navigate(new MainMenu());
 		}
 	}
 }

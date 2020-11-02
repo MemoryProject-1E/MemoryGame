@@ -24,9 +24,7 @@ namespace MemoryGame.Pages
 		private void ApplyWindowSetting()
 		{
 			FullScreenButton.Content = Config.WindowSetting;
-
 			var window = (MainWindow)Application.Current.MainWindow;
-
 			window.SetWindow();
 
 		}

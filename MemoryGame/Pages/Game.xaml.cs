@@ -13,11 +13,6 @@ namespace MemoryGame.Pages
 		private readonly CardGrid GridData;
 		private int CurrentPlayerIndex = 0;
 		private Card RevealedCard;
-		private Window SettingsWindow = new Window() {
-			Name = "SettingsWindow",
-			Style = Application.Current.TryFindResource("SettingsWindow") as Style,
-			Content = new SettingsWindowPage(),
-		};
 		private readonly Settings Config = new Settings();
 		private bool IsLocked = false;
 
@@ -39,8 +34,10 @@ namespace MemoryGame.Pages
 
 		public void OpenSettings(object sender, RoutedEventArgs e)
 		{
-			SettingsWindow = new Window();
-			SettingsWindow.Show();
+			SettingsWindowPage SettingsWindow = new SettingsWindowPage();
+			var WindowHost = new Window();
+			WindowHost.Content = SettingsWindow;
+			WindowHost.Show();
 		}
 
 		private void UpdatePlayerScore(Player player)

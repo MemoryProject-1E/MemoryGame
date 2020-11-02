@@ -9,6 +9,7 @@
 	d:DesignHeight="450"
 	d:DesignWidth="800"
 	Title="SettingsWindowPage"
+    Background="#0c164f"
 >
 	<Grid>
 		<Grid.ColumnDefinitions>
