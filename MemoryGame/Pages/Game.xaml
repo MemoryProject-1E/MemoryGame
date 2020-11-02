@@ -21,16 +21,16 @@
 			<ColumnDefinition />
 		</Grid.ColumnDefinitions>
 
-		<Button
+        <Button
+            Style="{StaticResource SettingsButton}"
 			Grid.Row="0"
 			Grid.Column="0"
 			Grid.ColumnSpan="2"
-			Width="66"
-			Height="66"
 			HorizontalAlignment="Right"
 			Margin="3"
-			Click="OpenSettings"
-		/>
+			Click="OpenSettings">
+            <Image Source="../Assets/Images/Cogwheel.png"></Image>
+        </Button>
 
         <StackPanel
 			Name="CardGridEl"

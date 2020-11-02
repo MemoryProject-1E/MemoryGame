@@ -4,7 +4,6 @@ using MemoryGame.Models;
 
 namespace MemoryGame.Pages
 {
-
 	public partial class SettingsPage : Page
 	{
 		private readonly Settings Config = new Settings();

@@ -1,9 +1,7 @@
 ﻿using System.Windows;
-using System.Configuration;
 using System.Windows.Navigation;
 using MemoryGame.Pages;
 using MemoryGame.Models;
-using System.Security.Cryptography.X509Certificates;
 
 namespace MemoryGame
 {

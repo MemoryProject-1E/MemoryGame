@@ -55,7 +55,6 @@ namespace MemoryGame.Pages
 			}
 		}
 
-
 		public void GoBack(object sender, RoutedEventArgs e)
 		{
 			NavigationService.Navigate(new MainMenu());
