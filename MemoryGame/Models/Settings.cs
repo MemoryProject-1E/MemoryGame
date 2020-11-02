@@ -50,7 +50,6 @@ namespace MemoryGame.Models
 
 			if (player.Score > HighScores[0].Score)
 			{
-
 				_highScores.Add(new HighScore
 				{
 					PlayerName = player.Name,
@@ -58,8 +57,6 @@ namespace MemoryGame.Models
 				});
 
 				HighScores.RemoveAt(HighScores.Count - 1);
-
-
 				Write();
 
 				return true;
