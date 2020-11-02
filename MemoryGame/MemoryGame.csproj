@@ -179,15 +179,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\Cards\Aarde.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Assets\Images\Cards\Jupiter.jpg" />
-    <Resource Include="Assets\Images\Cards\Mars.jpg" />
+    <Resource Include="Assets\Images\Cards\Mars.png" />
     <Resource Include="Assets\Images\Cards\Mercurius.jpg" />
     <Resource Include="Assets\Images\Cards\Neptunes.jpg" />
     <Resource Include="Assets\Images\Cards\Saturnus.jpg" />
     <Resource Include="Assets\Images\Cards\Uranus.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Images\CardsPlanets\" />
+    <Resource Include="Assets\Images\Cards\Venus.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
