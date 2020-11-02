@@ -25,7 +25,9 @@ namespace MemoryGame.Pages
 
 		public void GoToMainMenu(object sender, RoutedEventArgs e)
 		{
-			NavigationService.Navigate(new MainMenu());
+			var window = (MainWindow)Application.Current.MainWindow;
+			window.GoToMainMenu();
+
 			SettingsWindow.Close();
 		}
 

@@ -9,6 +9,7 @@
 	d:DesignHeight="450"
 	d:DesignWidth="800"
 	Title="SettingsWindowPage"
+    Background="#0c164f"
 >
 	<Grid>
 		<Grid.ColumnDefinitions>
@@ -18,11 +19,11 @@
 			<RowDefinition Style="{StaticResource HeadingRowSmall}" />
 			<RowDefinition />
 		</Grid.RowDefinitions>
-		<TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource SmallHeading}">Settings</TextBlock>
+		<TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource SmallHeading}">Instellingen</TextBlock>
 		<StackPanel Grid.Column="0" Grid.Row="1" Style="{StaticResource ButtonList}">
-            <Button Style="{StaticResource Button}" Click="Close">Close</Button>
-            <Button Style="{StaticResource Button}" Click="GoToMainMenu">Main Menu</Button>
-			<Button Style="{StaticResource Button}" Click="Exit">Exit</Button>
+            <Button Style="{StaticResource Button}" Click="Close">Venster Sluiten</Button>
+            <Button Style="{StaticResource Button}" Click="GoToMainMenu">Terug naar Hoofd Menu</Button>
+			<Button Style="{StaticResource Button}" Click="Exit">Afsluiten</Button>
 		</StackPanel>
 	</Grid>
 </Page>

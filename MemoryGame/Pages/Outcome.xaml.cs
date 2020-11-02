@@ -53,7 +53,7 @@ namespace MemoryGame.Pages
 			NavigationService.Navigate(new MainMenu());
 		}
 
-		public void Exit(object sender, RoutedEventArgs e)
+		public void ExitGame(object sender, RoutedEventArgs e)
 		{
 			System.Environment.Exit(0);
 		}

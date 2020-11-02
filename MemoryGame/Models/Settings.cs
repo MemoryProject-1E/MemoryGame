@@ -15,14 +15,11 @@ namespace MemoryGame.Models
 		private static bool IsInitialized = false;
 		private static int _gridSize;
 		private static List<HighScore> _highScores;
+		private static string _windowSetting;
 
 		private static List<HighScore> DefaultHighScores = new List<HighScore>()
 		{
-			new HighScore { PlayerName = "Gabriel", Score = 6 },
-			new HighScore { PlayerName = "Arvid", Score = 1 },
-			new HighScore { PlayerName = "Meerten", Score = 1 },
-			new HighScore { PlayerName = "Leon", Score = 1 },
-			new HighScore { PlayerName = "Maurits", Score = 1 },
+			new HighScore { PlayerName = "Gabriel", Score = 40 },
 		};
 
 		public Settings()
@@ -33,6 +30,7 @@ namespace MemoryGame.Models
 				{
 					_gridSize = 4;
 					_highScores = DefaultHighScores;
+					_windowSetting = "Windowed";
 					Write();
 				}
 				else
@@ -40,6 +38,7 @@ namespace MemoryGame.Models
 					ConfigFile config = JObject.Parse(File.ReadAllText(CONFIG_FILE_PATH)).ToObject<ConfigFile>();
 					_gridSize = config.GridSize;
 					_highScores = config.HighScores;
+					_windowSetting = config.WindowSetting;
 				}
 				IsInitialized = true;
 			}
@@ -87,9 +86,26 @@ namespace MemoryGame.Models
 			}
 		}
 
+		[JsonProperty]
+		public string WindowSetting
+		{
+			get { return _windowSetting; }
+			set
+			{
+				_windowSetting = value;
+				Write();
+			}
+		}
+
 		public void ResetHighScores()
 		{
 			HighScores = DefaultHighScores;
+		}
+
+		public void ResetSettings()
+		{
+			GridSize = 4;
+			WindowSetting = "Windowed";
 		}
 
 		private void Write()
@@ -101,6 +117,7 @@ namespace MemoryGame.Models
 				{
 					GridSize = GridSize,
 					HighScores = HighScores,
+					WindowSetting = WindowSetting,
 				};
 				serializer.Serialize(file, config);
 				file.Close();
@@ -111,6 +128,7 @@ namespace MemoryGame.Models
 		{
 			public int GridSize { get; set; }
 			public List<HighScore> HighScores { get; set; }
+			public string WindowSetting  { get; set; }
 		}
 	}
 

@@ -11,21 +11,26 @@
     Title="Settings"
 >
     <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Style="{StaticResource HeadingRowSmall}" />
-        <RowDefinition Height="Auto"/>
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition />
-      </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Style="{StaticResource HeadingRowSmall}" />
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-      <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Heading}">
-        Settings
-      </TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Heading}" Width="Auto">
+        Instellingen
+        </TextBlock>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonList}">
+        <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonList}" Margin="652,0">
             <Button Name="GridSizeButton" Style="{StaticResource Button}" Click="ChangeGridSize" />
-            <Button Style="{StaticResource Button}" Click="GoBack">Back</Button>
-      </StackPanel>
+            <Button Name="FullScreenButton" Style="{StaticResource Button}" Click="ChangeWindowSize"/>
+            <Button Style="{StaticResource Button}" Click="ResetSettings">Reset Instellingen</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0" Style="{StaticResource ButtonList}" Margin="652,0">
+            <Button Style="{StaticResource Button}" Click="GoBack">Terug</Button>
+        </StackPanel>
     </Grid>
 </Page>

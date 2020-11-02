@@ -36,8 +36,8 @@
 
         <StackPanel Grid.Row="2" Grid.Column="0" Style="{StaticResource ButtonList}">
             <Button Style="{StaticResource Button}" Click="Rematch">Opnieuw Spelen</Button>
-            <Button Style="{StaticResource Button}" Click="GoToMainMenu">Main Menu</Button>
-            <Button Style="{StaticResource Button}" Click="Exit">Exit</Button>
+            <Button Style="{StaticResource Button}" Click="GoToMainMenu">Hoofd Menu</Button>
+            <Button Style="{StaticResource Button}" Click="ExitGame">Afsluiten</Button>
         </StackPanel>
     </Grid>
 </Page>

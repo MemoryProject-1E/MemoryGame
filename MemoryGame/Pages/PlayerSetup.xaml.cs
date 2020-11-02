@@ -24,19 +24,6 @@ namespace MemoryGame.Pages
 			set { PlayerTwoName.Text = value; }
 		}
 
-		public void Submit(object sender, RoutedEventArgs e)
-		{
-			if (Validate())
-			{
-				var players = new Player[2]
-				{
-					new Player(PlayerOneNameText),
-					new Player(PlayerTwoNameText),
-				};
-				NavigationService.Navigate(new GamePage(players));
-			}
-		}
-
 		private bool Validate()
 		{
 			PlayerOneNameFeedback.Text = string.IsNullOrEmpty(PlayerOneNameText) ? "Required" : string.Empty;
@@ -53,6 +40,19 @@ namespace MemoryGame.Pages
 				PlayerTwoNameFeedback.Text = string.Empty;
 			}
 			return string.IsNullOrEmpty(PlayerOneNameFeedback.Text) && string.IsNullOrEmpty(PlayerTwoNameFeedback.Text);
+		}
+
+		public void Submit(object sender, RoutedEventArgs e)
+		{
+			if (Validate())
+			{
+				var players = new Player[2]
+				{
+					new Player(PlayerOneNameText),
+					new Player(PlayerTwoNameText),
+				};
+				NavigationService.Navigate(new GamePage(players));
+			}
 		}
 
 		public void GoBack(object sender, RoutedEventArgs e)
