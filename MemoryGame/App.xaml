@@ -145,7 +145,6 @@
 
         <Style x:Key="HighScoreItem" TargetType="{x:Type ListBoxItem}">
             <Setter Property="FontSize" Value="60" />
-            <Setter Property="FontStyle" Value="Italic" />
             <Setter Property="Foreground" Value="White" />
         </Style>
     </Application.Resources>

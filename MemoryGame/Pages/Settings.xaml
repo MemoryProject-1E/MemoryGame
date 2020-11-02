@@ -25,7 +25,7 @@
         </TextBlock>
 
         <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonList}" Margin="652,0">
-            <Button Name="GridSizeButton" Style="{StaticResource Button}" Click="ChangeGridSize" />
+            <!-- <Button Name="GridSizeButton" Style="{StaticResource Button}" Click="ChangeGridSize" /> // Currently not enough cards-->
             <Button Name="FullScreenButton" Style="{StaticResource Button}" Click="ChangeWindowSize"/>
             <Button Style="{StaticResource Button}" Click="ResetSettings">Reset Instellingen</Button>
         </StackPanel>

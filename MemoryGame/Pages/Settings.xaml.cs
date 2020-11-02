@@ -16,7 +16,7 @@ namespace MemoryGame.Pages
 
 		private void ApplySettings()
 		{
-			ApplyGridSize();
+			// ApplyGridSize();
 			ApplyWindowSetting();
 		}
 
@@ -28,17 +28,17 @@ namespace MemoryGame.Pages
 
 		}
 
-		private void ApplyGridSize()
+		/* private void ApplyGridSize()
 		{
 			GridSizeButton.Content = $"Grid Size: {Config.GridSize}";
-		}
+		} */
 
 		public void ChangeGridSize(object sender, RoutedEventArgs e)
 		{
 			if (Config.GridSize == 2) Config.GridSize = 4;
 			else if (Config.GridSize == 4) Config.GridSize = 6;
 			else Config.GridSize = 2;
-			ApplyGridSize();
+			// ApplyGridSize();
 		}
 
 		public void ChangeWindowSize(object sender, RoutedEventArgs e)

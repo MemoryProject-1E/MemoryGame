@@ -30,6 +30,7 @@ namespace MemoryGame.Pages
 				});
 			UpdatePlayerScore(Players[0]);
 			UpdatePlayerScore(Players[1]);
+			Labelnameplayer.Content = CurrentPlayer.Name + " is nu aan zet";
 		}
 
 		public void OpenSettings(object sender, RoutedEventArgs e)
@@ -91,7 +92,10 @@ namespace MemoryGame.Pages
 				UpdatePlayerScore(CurrentPlayer);
 				RevealedCard = null;
 				IsLocked = false;
+
 			}
+
+			Labelnameplayer.Content = CurrentPlayer.Name + " is nu aan zet";
 		}
 	}
 }
