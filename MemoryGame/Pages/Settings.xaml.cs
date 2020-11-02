@@ -20,19 +20,21 @@ namespace MemoryGame.Pages
 			ApplyWindowSetting();
 		}
 
+		//Dit laat de verschillende thema's op de knoppen zien dat wordt gelezen uit het settings bestand.
 		private void ApplyThemeCard()
 		{
 			if (Config.ThemeCard == 1)
 			{
-				ThemeCardButton.Content = $"Thema kaarten: Vis";
+				ThemeCardButton.Content = "Thema kaarten: Vis";
 			}
 			else if (Config.ThemeCard == 2)
 			{
-				ThemeCardButton.Content = $"Thema kaarten: Ruimte";
+				ThemeCardButton.Content = "Thema kaarten: Ruimte";
 			}
 
 		}
 		
+		//Onze 2 thema's worden gelinked aan een int (1 en 2).
 		private void ThemeCardSelector(object sender, RoutedEventArgs e)
 		{
 			if (Config.ThemeCard == 1)
@@ -47,6 +49,7 @@ namespace MemoryGame.Pages
 			ApplyThemeCard();
 		}
 
+		//deze kan ik niet uitleggen !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		private void ApplyWindowSetting()
 		{
 			FullScreenButton.Content = Config.WindowSetting;
@@ -54,6 +57,7 @@ namespace MemoryGame.Pages
 			window.SetWindow();
 		}
 
+		//Keuze tussen een fullscreen en venster
 		public void ChangeWindowSize(object sender, RoutedEventArgs e)
 		{
 			if (Config.WindowSetting == "Windowed") Config.WindowSetting = "FullScreen";
@@ -61,6 +65,7 @@ namespace MemoryGame.Pages
 			ApplyWindowSetting();
 		}
 
+		//Reset de settings naar standaard.
 		public void ResetSettings(object sender, RoutedEventArgs e)
 		{
 			Config.ResetSettings();
@@ -70,6 +75,7 @@ namespace MemoryGame.Pages
 
 		public void GoBack(object sender, RoutedEventArgs e) 
 		{
+			//Gaat terug naar de MainMenu.
 			NavigationService.Navigate(new MainMenu());
 		}
 

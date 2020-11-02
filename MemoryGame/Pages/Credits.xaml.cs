@@ -13,6 +13,7 @@ namespace MemoryGame.Pages
 
 		public void GoBack(object sender, RoutedEventArgs e)
 		{
+			//Gaat terug naar de MainMenu
 			NavigationService.Navigate(new MainMenu());
 		}
 	}

@@ -113,6 +113,7 @@ namespace MemoryGame.Models
 			}
 		}
 
+		//Deze functie reset de highscore.
 		public void ResetHighScores()
 		{
 			DefaultHighScores.Clear();

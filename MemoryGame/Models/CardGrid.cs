@@ -10,6 +10,9 @@ namespace MemoryGame.Models
 	{
 		private static List<CardType> GetShuffledTypes()
 		{
+			/// <summary>
+			/// Advanced randomizer van online
+			/// </summary>
 			var types = new List<CardType>();
 			foreach (CardType type in Enum.GetValues(typeof(CardType)).Cast<CardType>())
 			{

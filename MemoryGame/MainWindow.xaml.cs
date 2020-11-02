@@ -36,6 +36,7 @@ namespace MemoryGame
 
 		public void GoToMainMenu()
 		{
+			//Gaat naar MainMenu.
 			NavigationService.Navigate(new MainMenu());
 		}
 	}

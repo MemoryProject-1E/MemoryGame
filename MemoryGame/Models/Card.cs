@@ -12,6 +12,10 @@ namespace MemoryGame.Models
 	public class Card
 	{
 		private readonly Settings Config = new Settings();
+
+		/// <summary>
+		/// Maakt een list aan met kaarten die aan een jpg bestand gekoppeld zijn.
+		/// </summary>
 		private static readonly Dictionary<CardType, string> CardTypeImages = new Dictionary<CardType, string>
 		{
 			{ CardType.Fish1, "Fish1.jpg" },
@@ -24,12 +28,17 @@ namespace MemoryGame.Models
 			{ CardType.Fish_8, "Fish_8.jpg" },
 		};
 
+
 		public CardType Type;
 		public Button Element;
 		private readonly Image Image;
 
 		public Card(CardType type)
 		{
+
+			/// <summary>
+			/// Wanneer de settings voor de ruimte is geselecteerd is de int 2 en worden deze ruimte plaatjes in de lijst gelezen.
+			/// </summary>
 			if (Config.ThemeCard == 2)
 			{
 				CardTypeImages.Clear();
@@ -42,6 +51,9 @@ namespace MemoryGame.Models
 				CardTypeImages.Add(CardType.Fish_7, "Uranus.jpg");
 				CardTypeImages.Add(CardType.Fish_8, "Venus.jpg");
 			}
+			/// <summary>
+			/// Wanneer de settings voor vissen sijn geselecteerd is de int 1 en worden deze vis plaatjes in de lijst gelezen.
+			/// </summary>
 			else if (Config.ThemeCard == 1)
 			{
 				CardTypeImages.Clear();
@@ -55,6 +67,9 @@ namespace MemoryGame.Models
 				CardTypeImages.Add(CardType.Fish_8, "Fish_8.jpg");
 			}
 
+			/// <summary>
+			/// Leest de lijst nog een keer uit na de veranderingen
+			/// </summary>
 			Type = type;
 
 			Element = new Button()

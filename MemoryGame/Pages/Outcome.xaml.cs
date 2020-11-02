@@ -6,6 +6,7 @@ namespace MemoryGame.Pages
 {
 	public partial class Outcome : Page
 	{
+
 		private readonly Settings Config = new Settings();
 		private readonly Player[] Players;
 
@@ -41,6 +42,7 @@ namespace MemoryGame.Pages
 
 		public void Rematch(object sender, RoutedEventArgs e)
 		{
+			//Begint het spel opnieuw.
 			NavigationService.Navigate(new GamePage(new Player[]
 			{
 				new Player(Players[0].Name),
@@ -50,11 +52,13 @@ namespace MemoryGame.Pages
 
 		public void GoToMainMenu(object sender, RoutedEventArgs e)
 		{
+			//Gaat naar MainMenu.
 			NavigationService.Navigate(new MainMenu());
 		}
 
 		public void ExitGame(object sender, RoutedEventArgs e)
 		{
+			//Exit de game.
 			System.Environment.Exit(0);
 		}
 	}

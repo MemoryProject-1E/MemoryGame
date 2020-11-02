@@ -51,12 +51,14 @@ namespace MemoryGame.Pages
 					new Player(PlayerOneNameText),
 					new Player(PlayerTwoNameText),
 				};
+				//Gaat naar het Spelscherm.
 				NavigationService.Navigate(new GamePage(players));
 			}
 		}
 
 		public void GoBack(object sender, RoutedEventArgs e)
 		{
+			//Gaat terug naar de MainMenu.
 			NavigationService.Navigate(new MainMenu());
 		}
 	}
